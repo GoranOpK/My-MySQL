@@ -1,4 +1,6 @@
--- Kreiranje tabela za projekat My-MySQL
+-- Kreiranje baze podataka (ako ne postoji)
+CREATE DATABASE IF NOT EXISTS my_mysql;
+USE my_mysql;
 
 -- Tabela za vremenske slotove
 CREATE TABLE time_slots (
@@ -39,4 +41,4 @@ CREATE TABLE system_config (
     name VARCHAR(255) NOT NULL UNIQUE,
     value INT NOT NULL,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);database/create_tables.sql
+);
