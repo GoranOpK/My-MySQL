@@ -121,6 +121,10 @@ VALUES
 INSERT INTO admins (username, password_hash, email) 
 VALUES ('admin', '$2y$10$examplehashvaluehere', 'admin@example.com');
 
--- Postavljanje broja dostupnih parking mesta
+-- Postavljanje broja dostupnih parking mjesta
 INSERT INTO system_config (name, value) 
 VALUES ('available_parking_slots', 7);
+
+-- Dodavanje rezervacija (koristi proceduru)
+CALL AddReservation(1, STR_TO_DATE('12-05-25', '%d-%m-%y'), 'Goran', 'Croatia', 'ZG1234AA', 2, 'goran@example.com');
+CALL AddReservation(2, STR_TO_DATE('13-05-25', '%d-%m-%y'), 'Ana', 'Croatia', 'ZG5678BB', 3, 'ana@example.com');
