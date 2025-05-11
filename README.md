@@ -60,5 +60,10 @@ U fajlu `seed_data.sql` dodali smo default administratorski nalog:
 
 ---
 
+## Šema baze podataka
+
+Vizuelni prikaz šeme baze podataka dostupan je u PDF formatu:
+[Preuzmi šemu baze podataka (PDF)](docs/database_schema.pdf)
+
 ## Autor
 GORAN GRBOVIĆ 
