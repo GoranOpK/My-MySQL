@@ -8,10 +8,23 @@ CREATE PROCEDURE AddReservation (
     IN userName VARCHAR(255),
     IN country VARCHAR(100),
     IN licensePlate VARCHAR(50),
-    IN vehicleTypeId INT,
+    IN vehicleTypeName VARCHAR(100),
     IN email VARCHAR(255)
 )
 BEGIN
+    DECLARE vehicleTypeId INT;
+
+    -- Pronađi ID tipa vozila na osnovu naziva
+    SELECT id INTO vehicleTypeId
+    FROM vehicle_types
+    WHERE type_name = vehicleTypeName;
+
+    -- Ako ID nije pronađen, podigni grešku
+    IF vehicleTypeId IS NULL THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Tip vozila nije validan.';
+    END IF;
+
     -- Provjeri dostupnost vremenskog slota
     IF (SELECT status FROM time_slots WHERE id = timeSlotId) = 'available' THEN
         -- Dodaj rezervaciju u tabelu
