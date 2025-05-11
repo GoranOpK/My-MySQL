@@ -119,7 +119,10 @@ VALUES
 
 -- Ubacivanje administratorskog naloga
 INSERT INTO admins (username, password_hash, email) 
-VALUES ('admin', '$2y$10$examplehashvaluehere', 'admin@example.com');
+VALUES ('admin', PASSWORD('secure_password'), 'admin@example.com')
+ON DUPLICATE KEY UPDATE 
+    password_hash = PASSWORD('secure_password'),
+    email = 'admin@example.com';
 
 -- Postavljanje broja dostupnih parking mjesta
 INSERT INTO system_config (name, value) 
